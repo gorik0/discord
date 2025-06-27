@@ -109,7 +109,7 @@ const MemebersModal = () => {
             Members Mangm
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500">
-            {server?.members.length} Memebers
+            {server?.members?.length} Memebers
           </DialogDescription>
         </DialogHeader>
 

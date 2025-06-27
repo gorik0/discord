@@ -31,11 +31,9 @@ const ServerHeader = ({ server, role }: IServerHeader) => {
   const isModerator = isAdmin || role === MemberRole.MODERATOR;
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
-        <button className="w-full text-md font-semibold px-3 flex items-center h-12 border-neutral-200 dark:border-neutral-800 border-b-2 hover:bg-zinc-700/10 dark:hover:bg-zinc-700/50 transition">
-          {server.name}
-          <ChevronDown className="h-5 w-5" />
-        </button>
+      <DropdownMenuTrigger className="w-full text-md font-semibold px-3 flex items-center h-12 border-neutral-200 dark:border-neutral-800 border-b-2 hover:bg-zinc-700/10 dark:hover:bg-zinc-700/50 transition">
+        {server.name}
+        <ChevronDown className="h-5 w-5" />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56 text-xs font-medium text-black dark:text-neutral-500 space-y-[2px]">
         {isModerator && (
@@ -66,7 +64,10 @@ const ServerHeader = ({ server, role }: IServerHeader) => {
           </DropdownMenuItem>
         )}
         {isModerator && (
-          <DropdownMenuItem className=" cursor-pointer text-sm p-3">
+          <DropdownMenuItem
+            onClick={() => onOpen("channelCreate")}
+            className=" cursor-pointer text-sm p-3"
+          >
             CreateChannel
             <PlusCircle className="ml-auto h-4 w-4 " />
           </DropdownMenuItem>
@@ -85,7 +86,10 @@ const ServerHeader = ({ server, role }: IServerHeader) => {
           </DropdownMenuItem>
         )}
         {!isAdmin && (
-          <DropdownMenuItem className="text-rose-500 hover:bg-rose-700/10  cursor-pointer text-sm p-3">
+          <DropdownMenuItem
+            onClick={() => onOpen("leaveServer", { server })}
+            className="text-rose-500 hover:bg-rose-700/10  cursor-pointer text-sm p-3"
+          >
             Leave server
             <LogOut className="text-rose-500 ml-auto h-4 w-4 " />
           </DropdownMenuItem>
