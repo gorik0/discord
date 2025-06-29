@@ -30,7 +30,7 @@ const ServerSection = ({
       {role !== "GUEST" && content === "channels" && (
         <ActionToolTip label="Create Channel " side="top">
           <button
-            onClick={() => onOpen("channelCreate")}
+            onClick={() => onOpen("channelCreate", { channelType: type })}
             className="transition text-zinc-300 hover:text-zinc-600 dark:text-zinc-400 hover:dark:text-zinc-100"
           >
             <Plus className="h-4 w-4" />
